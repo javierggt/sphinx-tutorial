@@ -1,0 +1,27 @@
+.. Star Plot documentation master file, created by
+   sphinx-quickstart on Wed Sep 23 11:55:41 2020.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Star Plot
+=========
+
+Star Plot is a little application to visualize the star field around a given attitude.
+
+.. automodule:: star_plot.star_plot
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+
+star_plot script
+----------------
+
+.. argparse::
+   :ref: star_plot.scripts.main.parser
+   :prog: star_plot
+
+
+API
+---

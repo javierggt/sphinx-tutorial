@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Plot &#8212; Star Plot  documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'/>
+
+  </head><body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="#"><span id="logotext1">Ska! </span><span id="logotext2">Star</span><span id="logotext3">Plot</span></a>
+  <ul>
+    
+    <li><a class="home" title="Homepage" href="">
+        <span id="logotext1"></span><span id="logotext2"></span>
+    </a></li>
+    <li><a title="General Index" href="genindex.html">Index</a></li>
+    <li><a title="Module Index" href="py-modindex.html">Modules</a></li>
+    <li>
+      
+      
+<form action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      
+    </li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li>
+	<a href="#">Star Plot  documentation</a>
+	 &#187;
+      </li>
+      
+       
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="star-plot">
+<h1>Star Plot<a class="headerlink" href="#star-plot" title="Permalink to this headline">¶</a></h1>
+<p>Star Plot is a little application to visualize the star field around a given attitude.</p>
+<span class="target" id="module-star_plot.star_plot"></span><p>The star_plot module provides StarPlot a Qt widget to display a star field.</p>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">star_plot</span> <span class="kn">import</span> <span class="n">StarPlot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">Quaternion</span> <span class="kn">import</span> <span class="n">Quat</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">Chandra.Time</span> <span class="kn">import</span> <span class="n">DateTime</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="n">StarPlot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quaternion</span> <span class="o">=</span> <span class="n">Quat</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.474674</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.473931</span><span class="p">,</span> <span class="mf">0.262471</span><span class="p">,</span> <span class="mf">0.693674</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">starcat_time</span> <span class="o">=</span> <span class="n">DateTime</span><span class="p">(</span><span class="s1">&#39;2020:001:19:18:21.914&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">show_stars</span><span class="p">(</span><span class="n">starcat_time</span><span class="p">,</span> <span class="n">quaternion</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="star-plot-script">
+<h2>star_plot script<a class="headerlink" href="#star-plot-script" title="Permalink to this headline">¶</a></h2>
+<p><p>Plot the star field at a given time and around a given attitude</p>
+</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">star_plot</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">obsid</span> <span class="n">OBSID</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">date</span> <span class="n">DATE</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="Named Arguments">
+<h3>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h3>
+<dl class="option-list">
+<dt><kbd>--obsid</kbd></dt>
+<dd><p>OBSID</p>
+</dd>
+<dt><kbd>--date</kbd></dt>
+<dd><p>Date in any CxcTime-compatible format</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Star Plot</a><ul>
+<li><a class="reference internal" href="#star-plot-script">star_plot script</a><ul>
+<li><a class="reference internal" href="#Named Arguments">Named Arguments</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#api">API</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<form action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="_sources/index.rst.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2020, Javier Gonzalez.<br/>
+    Created using <a href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> 3.1.2. &nbsp;
+  </p>
+</footer>
+  </body>
+</html>
