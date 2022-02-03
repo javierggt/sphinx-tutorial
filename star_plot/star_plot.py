@@ -1,3 +1,27 @@
+"""
+A module that provides StarPlot, a Qt widget to display a star field.
+
+Example usage::
+
+    >>> from star_plot import StarPlot
+    >>> from Quaternion import Quat
+    >>> from Chandra.Time import DateTime
+
+    >>> w = StarPlot()
+    >>> quaternion = Quat(q=[-0.474674, -0.473931, 0.262471, 0.693674])
+    >>> starcat_time = DateTime('2020:001:19:18:21.914')
+    >>> w.show_stars(starcat_time, quaternion)
+    >>> w.show()
+
+
+A doctest block:
+
+>>> print('hello')
+hello
+
+
+"""
+
 import numpy as np
 from PyQt5 import QtCore as QtC, QtWidgets as QtW, QtGui as QtG
 
@@ -9,6 +33,7 @@ from .star_view import StarView
 
 
 GLOBAL_VARIABLE = None
+"""Some global variable for I don't know what"""
 
 
 def _symsize(mag):
@@ -20,7 +45,13 @@ def _symsize(mag):
 
 
 class StarPlot(QtW.QWidget):
+    """
+    A Qt Widget to plot a star field.
+    """
     def __init__(self, parent=None):
+        """
+        Initialize a StarPlot
+        """
         super().__init__(parent)
 
         layout = QtW.QVBoxLayout(self)
@@ -37,6 +68,9 @@ class StarPlot(QtW.QWidget):
         self.show_stars(starcat_time, quaternion)
 
     def show_stars(self, starcat_time, quaternion):
+        """
+        Show the stars at the given time and attitude.
+        """
         self.scene.clear()
         self.stars = get_stars(starcat_time, quaternion)
         black_pen = QtG.QPen()

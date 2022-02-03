@@ -1,4 +1,27 @@
+"""
+A collection of utility functions to interface between star_plot and Ska.
+"""
+
 def get_stars(starcat_time, quaternion, radius=1.5):
+    """
+    Get a list of stars from the AGASC, around a given attitude and at a the given time.
+
+    This function wraps a call to the agasc module, to get a list of stars. It then converts the
+    stars' ra and dec to camera-centric y-angle and z-angle. It also converts y-angle and z-angle
+    to pixel row and column
+
+    Parameters
+    ----------
+    starcat_time : CxoTime
+        CxoTime-compatible timestamp.
+    quaternion : Quat
+        `~Quat.Quaternion` specifying the attitude
+
+    Returns
+    -------
+    astropy.table.Table
+        A table of stars.
+    """
     import agasc
     from Ska.quatutil import radec2yagzag
     from chandra_aca.transform import yagzag_to_pixels

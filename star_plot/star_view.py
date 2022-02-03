@@ -1,10 +1,20 @@
+"""
+A module with StarView, a QGraphicsView-derived class that can be used in StarPlot.
+"""
+
 from PyQt5 import QtCore as QtC, QtWidgets as QtW, QtGui as QtG
 
 from .utils import get_stars
 
 
 class StarView(QtW.QGraphicsView):
+    """
+    Star view
+    """
     def __init__(self, scene=None):
+        """
+        Initialize a StarView
+        """
         super().__init__(scene)
 
         self._start = None
@@ -13,6 +23,9 @@ class StarView(QtW.QGraphicsView):
         self.fov = self.scene().addRect(-b1hw, -b1hw, 2 * b1hw, 2 * b1hw)
 
     def mouseMoveEvent(self, event):
+        """
+        Handle mouse move events.
+        """
         pos = event.pos()
         if self._start is None:
             return
@@ -32,17 +45,33 @@ class StarView(QtW.QGraphicsView):
             self._start = pos
 
     def mouseReleaseEvent(self, event):
+        """
+        Handle mouse release events.
+        """
         self._start = None
 
     def mousePressEvent(self, event):
+        """
+        Handle mouse press events.
+        """
         self._moving = False
         self._start = event.pos()
 
     def wheelEvent(self, event):
+        """
+        Handle wheel events.
+        """
         scale = 1 + 0.5 * event.angleDelta().y() / 360
         self.scale(scale, scale)
 
     def drawForeground(self, painter, rect):
+        """
+        Draw a foreground to the star field.
+
+        The stars are in the graphics scene, and this class provides a viewport which the user can
+        move around the scene. The foreground drawn by this function is fixed relative to the
+        viewport. The serve to delineate the field of view.
+        """
         black_pen = QtG.QPen()
         black_pen.setWidth(2)
         b1hw = 512.
